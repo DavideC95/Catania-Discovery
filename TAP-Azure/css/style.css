@@ -1,0 +1,105 @@
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.mb-5 {
+  margin-bottom:5px;	
+}
+
+.mt-5 {
+  margin-top:5px;	
+}
+
+.ml-5 {
+  margin-left:5px;	
+}
+
+.m-0 {
+	margin:0px;
+}
+.mr-5 {
+  margin-right:5px;	
+}
+
+.mt-0 {
+	margin-top:0px;
+}
+.mr-0 {
+	margin-right:0px;
+}
+.mb-0 {
+	margin-bottom:0px;
+}
+
+.ml-0 {
+	margin-left:0px;
+}
+
+.pl-5 {
+  padding-left:5px;	
+}
+
+.pr-5 {
+  padding-right:5px;	
+}
+
+.pl-0 {
+  padding-left:0px;	
+}
+
+.pr-0 {
+  padding-right:0px;	
+}
+
+.pl-8 {
+  padding-left:8px;	
+}
+
+.pr-8 {
+  padding-right:8px;	
+}
+
+
+
+.buttons-size {
+	width:150px;
+	height:50px;
+}
+
+.buttons-size-2 {
+	width:150px;
+	height:35px;
+}
+.contained-box {
+	background-color:#222;
+	width: 400px;
+	height:200px;
+	float:right;
+	margin-right:18px;
+	margin-top: 18px;
+	opacity: 0.9;
+	color: white;
+	padding:0px 10px 10px 10px;
+}
+
+
+.container-box {
+    background-image: url("../food3.jpg");
+    width: 100%;
+    background-size: cover;
+    height: 450px;
+    box-sizing: border-box;
+}
+
+.cartImages {
+	width:200px;
+	height:150px;
+	float:left;
+	margin-right: 15px;
+}
+
+.list-group-item {
+	float:left;
+	width:100%;
+}

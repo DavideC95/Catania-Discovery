@@ -1,0 +1,53 @@
+ <!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Angular-Bootstrap-Template">
+        <meta name="author" content="Tkd-Alex">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Angular-Bootstrap-Template</title>
+
+        <!-- JavaScript -->
+        <script src="lib/js/jquery.min.js"></script>
+        <script src="lib/js/angular.min.js"></script>
+        <script src="lib/js/angular-ui-router.min.js"></script>
+        <script src="lib/js/ui-bootstrap.min.js"></script>
+        <script src="lib/js/bootstrap.min.js"></script>
+
+        <script src="js/app.js"></script>
+        <script src="js/routes.js"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="lib/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="lib/css/bootstrap-theme.min.css"/>
+
+        <link href="css/style.css" rel="stylesheet" type="text/css"/> 
+    </head>
+    
+    <body>
+		
+		<div class="container pl-0 pr-0">
+			<nav class="navbar navbar-inverse mt-5 row" role="navigation">	
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Catania Discovery</a> 
+				</div>
+
+				<div>
+					<ul class="nav navbar-nav">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Tours</a></li>
+						<li><a href="#">Products</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contacts</a></li>
+					</ul>
+				</div>
+			</nav> 
+		</div>
+		<div ui-view >
+		  
+		</div> 
+
+
+    </body>
+</html>
