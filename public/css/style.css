@@ -4,22 +4,22 @@
 }
 
 .mb-5 {
-  margin-bottom:5px;	
+  margin-bottom:5px;
 }
 
 .mt-5 {
-  margin-top:5px;	
+  margin-top:5px;
 }
 
 .ml-5 {
-  margin-left:5px;	
+  margin-left:5px;
 }
 
 .m-0 {
 	margin:0px;
 }
 .mr-5 {
-  margin-right:5px;	
+  margin-right:5px;
 }
 
 .mt-0 {
@@ -37,27 +37,27 @@
 }
 
 .pl-5 {
-  padding-left:5px;	
+  padding-left:5px;
 }
 
 .pr-5 {
-  padding-right:5px;	
+  padding-right:5px;
 }
 
 .pl-0 {
-  padding-left:0px;	
+  padding-left:0px;
 }
 
 .pr-0 {
-  padding-right:0px;	
+  padding-right:0px;
 }
 
 .pl-8 {
-  padding-left:8px;	
+  padding-left:8px;
 }
 
 .pr-8 {
-  padding-right:8px;	
+  padding-right:8px;
 }
 
 
@@ -85,7 +85,7 @@
 
 
 .container-box {
-    background-image: url("../food3.jpg");
+    background-image: url("../images/food3.jpg");
     width: 100%;
     background-size: cover;
     height: 450px;
