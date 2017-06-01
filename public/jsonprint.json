@@ -1,6 +1,4 @@
-<?php
-
-echo '{
+{
   "records": [
   {	
 	"vendorName": "Tascone Danilo",
@@ -12,9 +10,9 @@ echo '{
     "color": "#CCC",
     "faces": 14,
     "images": [
-      "gem-02.jpg",
-      "gem-05.jpg",
-      "gem-09.jpg"
+      "/images/gem-02.jpg",
+      "/images/gem-05.jpg",
+      "/images/gem-09.jpg"
     ]
 
   },
@@ -28,9 +26,9 @@ echo '{
     "color": "#EEE",
     "faces": 12,
     "images": [
-      "gem-01.jpg",
-      "gem-03.jpg",
-      "gem-04.jpg"
+      "/images/gem-01.jpg",
+      "/images/gem-03.jpg",
+      "/images/gem-04.jpg"
     ]
 
   },
@@ -44,10 +42,10 @@ echo '{
     "color": "#000",
     "faces": 6,
     "images": [
-      "gem-06.jpg",
-      "gem-07.jpg",
-      "gem-08.jpg"
+      "/images/gem-06.jpg",
+      "/images/gem-07.jpg",
+      "/images/gem-08.jpg"
     ]
 
   }
-]}';
+]}

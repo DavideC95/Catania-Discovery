@@ -5,7 +5,7 @@ app.controller('homeController', function ($scope) {
 });
 
 app.controller('showCaseController', function ($scope,$http) {
-    $http.get("jsonprint.php").then(function(response) {
+    $http.get("jsonprint.json").then(function(response) {
         $scope.myData = response.data.records;
     });
 });
