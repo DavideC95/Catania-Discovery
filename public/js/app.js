@@ -9,3 +9,15 @@ app.controller('showCaseController', function ($scope,$http) {
         $scope.myData = response.data.records;
     });
 });
+
+app.controller('profileController', function ($scope,$http) {
+	$scope.helloworld = "Hello world by AngularJS";
+});
+
+
+//Modulo per la gestione della nav bar per la compatibilità a varie risoluzioni.
+angular.module('ui.bootstrap').controller('CollapseCtrl', function ($scope) {
+  $scope.isNavCollapsed = true;
+  $scope.isCollapsed = false;
+  $scope.isCollapsedHorizontal = false;
+});
