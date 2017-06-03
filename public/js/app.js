@@ -16,8 +16,6 @@ app.controller('profileController', function ($scope,$http) {
 
 
 //Modulo per la gestione della nav bar per la compatibilità a varie risoluzioni.
-angular.module('ui.bootstrap').controller('CollapseCtrl', function ($scope) {
-  $scope.isNavCollapsed = true;
-  $scope.isCollapsed = false;
-  $scope.isCollapsedHorizontal = false;
+app.controller('CollapseController', function ($scope) {
+  $scope.isNavCollapsed = true; //L'unica che vorrei implementare nel menù a tendina per sm. by DC
 });
