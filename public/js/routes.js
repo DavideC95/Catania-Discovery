@@ -12,6 +12,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     controller:"profileController"
     })
 
+    .state("seller", {
+    url: '/seller',
+    templateUrl: "partials/seller.html",
+    controller:"sellerController"
+    })
+
     .state('initial', {
       url: '/home',
       templateUrl: 'partials/home.html',

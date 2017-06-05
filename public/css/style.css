@@ -107,6 +107,38 @@
 	font-size: 200%;
 }
 
+.homeModifier{
+	margin-top: 50px;
+}
+
+.showcaseModifier{
+	margin-top: 50px;
+}
+
+.profileModifier{
+	margin-top: 50px;
+}
+
+.sellerModifier{
+	margin-top: 50px;
+}
+
+.titleSeller{
+	font-size: 200%;
+}
+
+.sellerCarousel{
+	  display: block;
+      overflow: visible;
+      width: 100%;
+      height: auto;
+      margin-right: auto;
+      margin-bottom: 12px;
+      margin-left: auto;
+      float: none;
+}
+
+
 /*Codice CSS per regolare lo stile della pagina del profilo di un utente */
 
    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
