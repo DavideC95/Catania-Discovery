@@ -1,2 +1,56 @@
-<h1 class="text-center"> Welcome to register page</h1>
-<hr>
+<div class="container Register">    
+    <div class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"> 
+        <div class="panel panel-default" >
+            <div class="panel-heading">
+                <div class="panel-title text-center"> Please complete all the fields </div>
+            </div>     
+            <div class="panel-body" >
+                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST">
+                    <div class="input-group">
+                        <span class="input-group-addon"> Name </span>
+                        <input type="text" class="form-control" name="name" placeholder="First Name">
+                    </div> 
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon"> Surname </span>
+                        <input type="text" class="form-control" name="surname" placeholder="Last Name">
+                    </div> 
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon"> E-mail </span>
+                        <input type="e-mail" class="form-control" name="e-mail" 
+                        placeholder="example@gmail.com">                                        
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">Phone Number</span>
+                        <input type="tel" class="form-control" name="mobile" placeholder="+39 123 456789">
+                    </div>  
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon"> Birth </span>
+                        <input type="date" class="form-control" name="birth">                                        
+                    </div>
+                    <hr>
+                    <div class="input-group">
+                        <span class="input-group-addon"> Password </span>
+                        <input type="password" class="form-control" name="password" 
+                            placeholder="Password">                                        
+                    </div>
+                    <br> 
+                    <div class="input-group">
+                        <span class="input-group-addon"> Confirm Password </span>
+                        <input type="password" class="form-control" name="confirmPwd" 
+                        placeholder="Confirm Password">                                        
+                    </div>                                                             
+                    <div class="form-group">
+                        <div class="col-sm-12 controls text-center">
+                            <button type="submit" href="#!/home" class="btn btn-default submit"> Register
+                            </button>
+                        </div>
+                    </div>
+                </form>     
+            </div>                     
+        </div>  
+    </div>
+</div>
