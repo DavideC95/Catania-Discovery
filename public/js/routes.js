@@ -5,6 +5,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/home');
 
   $stateProvider
+    
+    .state("Login", {
+    url: "/Login",
+    templateUrl: "partials/Login.html",
+    controller:"LoginController"
+    })
+    
+    .state("Register", {
+    url: "/Register",
+    templateUrl: "partials/Register.html",
+    controller: "RegisterController"
+    })
 
     .state("profile", {
     url: '/profile',
@@ -29,6 +41,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	  templateUrl: "partials/showcase.html",
 	  controller:"showCaseController"
 	});
-
+    
 });
 	

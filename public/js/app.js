@@ -18,6 +18,14 @@ app.controller('sellerController', function ($scope,$http) {
 	$scope.helloworld = "Hello world by AngularJS";
 });
 
+app.controller('LoginController', function ($scope,$http) {
+  $scope.helloworld = "Hello world by AngularJS";
+});
+
+app.controller('RegisterController', function ($scope,$http) {
+  $scope.helloworld = "Hello world by AngularJS";
+});
+
 
 //Modulo per la gestione della nav bar per la compatibilità a varie risoluzioni.
 app.controller('CollapseController', function ($scope) {
@@ -92,4 +100,20 @@ app.controller('RatingController', function ($scope) {
     $scope.overStar = value;
     $scope.percent = 100 * (value / $scope.max);
   };
+});
+
+
+//Modulo per il dropDown del join us nell'index
+app.controller('DropdownJoin', function ($scope, $log) {
+
+  $scope.status = {
+    isopen: false
+  };
+
+  $scope.toggleDropdown = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.status.isopen = !$scope.status.isopen;
+  };
+
 });
