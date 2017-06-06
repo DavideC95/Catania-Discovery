@@ -9,9 +9,13 @@ var mongoose    = require('mongoose');
 var fs          = require('fs');
 var nodemailer  = require('nodemailer');
 
-var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
-var config = require('./config'); // get our config file
-var User   = require('./app/models/user'); // get our mongoose models
+var jwt       = require('jsonwebtoken'); // used to create, sign, and verify tokens
+var config    = require('./config'); // get our config file
+// get our mongoose models
+var User      = require('./app/models/user');
+var Offer     = require('./app/models/offer');
+var OfferType = require('./app/models/offerType');
+var City      = require('./app/models/city');
 
 // =======================
 // configuration =========
@@ -46,14 +50,14 @@ apiRoutes.get('/', function(req, res) {
 
 /*
  * /authenticate
- * name:      name of the user [string]
+ * nickname:      name of the user [string]
  * password:  password of the user [string]
  */
 apiRoutes.post('/authenticate', function(req, res) {
 
   // find the user
   User.findOne({
-    "name": req.body.name
+    "nickname": req.body.nickname
   }, function(err, user) {
 
     if (err) throw err;
@@ -107,76 +111,97 @@ apiRoutes.post('/authenticate', function(req, res) {
  * password:  password of the user [string]
  * email:     email of the user [string]
  */
-apiRoutes.post('/register', function(req, res, next) {
-  User.find({email: req.body.email}, function(err, users){
-    if(err)
-      throw(err);
-    if(users[0]){
-      return res.json({
-        success: false,
-        message: "this email is already registered"
-      });
-    }
-    else{
-      next();
-    }
-  });
-},function(req, res, next){
-      User.find({name: req.body.name}, function(err, users) {
+apiRoutes.post('/register', function(req, res, next){
+  console.log(req.body.nickname +"  "+req.body.password+"  "+req.body.email);
+  if(!req.body.nickname || !req.body.password || !req.body.email)
+    res.json({
+      success: false,
+      message: "You've to fill all the fields."
+    });
+  else
+    next();
+},function(req,res, next){
+    User.find({email: req.body.email}, function(err, users){
+      if(err)
+        throw(err);
+      if(users[0]){
+        return res.json({
+          success: false,
+          message: "this email is already registered"
+        });
+      }
+      else{
+        next();
+      }
+    });
+  },function(req, res, next){
+      User.find({nickname: req.body.nickname}, function(err, users) {
         if(err)
           throw(err);
-        console.log(users[0]);
         if(users[0])
           return res.json({
             success: false,
-            message: "This username already exist."
+            message: "This nickname already exist."
           });
         else{
           next();
         }
       });
   },function(req, res, next){
-      var nick = new User({
-        name: req.body.name,
-        password: req.body.password,
-        email: req.body.email,
-        blocked: true,
-        admin: true
-      });
+    var nick = new User({
+      nickname: req.body.nickname,
+      name: req.body.name,
+      surname: req.body.surname,
+      password: req.body.password,
+      email: req.body.email,
+      propic: req.body.propic,
+      tourist_seller: req.body.tourist_seller,
+      blocked: true
+    });
 
-      // save the sample user
-      nick.save(function(err) {
-        if (err) throw err;
+    // save the sample user
+    nick.save(function(err) {
+      if (err) throw err;
+      res.json({
+        success: true,
+        message: "User registered successfully!"
+      })
+      console.log('User saved successfully');
+    });
 
-        console.log('User saved successfully');
-      });
+    var id = nick._id;
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: config.email,
+        pass: config.password
+      }
+    });
 
-      var id = nick._id;
-      var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: config.email,
-          pass: config.password
-        }
-      });
+    var verify = config.home_path + '/api/verify?token=' +id;
+    var mailOptions = {
+      from: config.email,
+      to: nick.email,
+      subject: 'Verify your Countryless account!',
+      text: verify
+    };
 
-      var verify = 'http://localhost:8080/api/verify?token='+id;
-      var mailOptions = {
-        from: config.email,
-        to: nick.email,
-        subject: 'Verify your AzureCloud-Cytoscape account!',
-        text: verify
+    transporter.sendMail(mailOptions, function(err, info){
+      if(err){
+        console.log("Invalid Email.");
+        res.json({
+          success: false,
+          message: "Invalid Email."
+        })
+      }
+      else {
+        console.log('Message sent: ' +info.response);
+        res.json({
+          success: true,
+          message: "Email di conferma inviata con successo!"
+        });
       };
-
-      transporter.sendMail(mailOptions, function(err, info){
-        if(err)
-          throw(err);
-        else {
-          console.log('Message sent: ' +info.response);
-          res.json(info.response);
-        };
-      });
-      return;
+    });
   }
 );
 
@@ -193,10 +218,11 @@ apiRoutes.get('/verify', function(req,res){
       throw(err);
   });
 
-  res.json({
-    success: true,
-    message: "User verified."
-  });
+  res.writeHead(301,
+    { Location: config.home_path + '/#!/login'},
+    "User verified."
+  );
+  res.end();
 });
 
 /*
@@ -222,23 +248,24 @@ apiRoutes.get('/verify', function(req,res){
  });
 
  apiRoutes.get('/nick_verify', function(req, res){
-   User.find({name: req.query.name}, function(err, users){
+   User.find({nickname: req.query.nickname}, function(err, users){
     if(err)
       throw(err);
     if(users[0])
       res.json({
         success: false,
-        message: "This username already exists"
+        message: "This nickname already exists"
       });
     else
       res.json({
         success: true,
-        message: "Valid username"
+        message: "Valid nickname"
       })
    });
  });
 
 // route middleware to verify a token
+/*
 apiRoutes.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token
@@ -269,6 +296,7 @@ apiRoutes.use(function(req, res, next) {
 
   }
 });
+*/
 
 // =======================
 // start the server ======
