@@ -7,45 +7,45 @@
             <div class="panel-body" >
                 <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST">
                     <div class="input-group register">
-                        <span class="input-group-addon"> Name </span>
-                        <input type="text" class="form-control register" name="name" placeholder="First Name" required>
+                        <span class="input-group-addon register"> Name </span>
+                        <input type="text" class="form-control register" ng-model="name" placeholder="First Name" required>
                     </div> 
                     <br>
                     <div class="input-group register">
-                        <span class="input-group-addon"> Surname </span>
-                        <input type="text" class="form-control register" name="surname" placeholder="Last Name" required>
+                        <span class="input-group-addon register"> Surname </span>
+                        <input type="text" class="form-control register" ng-model="surname" placeholder="Last Name" required>
                     </div> 
                     <br>
                     <div class="input-group register">
-                        <span class="input-group-addon text-center"> E-mail </span>
-                        <input type="email" class="form-control register" name="e-mail" 
+                        <span class="input-group-addon register text-center"> E-mail </span>
+                        <input type="text" class="form-control register" ng-model="e-mail" 
                         placeholder="example@gmail.com" required>                                        
                     </div>
                     <br>
                     <div class="input-group register">
-                        <span class="input-group-addon text-center">Phone Number</span>
-                        <input type="tel" class="form-control register" name="mobile" placeholder="+39 123 456789">
+                        <span class="input-group-addon register text-center">Phone Number</span>
+                        <input type="tel" class="form-control register" ng-model="mobile" placeholder="+39 123 456789">
                     </div>  
                     <br>
                     <div class="input-group register">
-                        <span class="input-group-addon text-center"> Birth </span>
-                        <input type="date" class="form-control register" name="birth">                                        
+                        <span class="input-group-addon register text-center"> Birth </span>
+                        <input type="date" class="form-control register" ng-model="birth">                                        
                     </div>
                     <hr>
                     <div class="input-group register">
-                        <span class="input-group-addon text-center">Username</span>
-                        <input type="text" class="form-control register" name="nickname" placeholder="Username" required>                                        
+                        <span class="input-group-addon register text-center">Username</span>
+                        <input type="text" class="form-control register" ng-model="nickname" placeholder="Username" required>                                        
                     </div>
                     <br>
                     <div class="input-group register">
-                        <span class="input-group-addon text-center"> Password </span>
-                        <input type="password" class="form-control register" name="password" 
+                        <span class="input-group-addon register text-center"> Password </span>
+                        <input type="password" class="form-control register" ng-model="password" 
                             placeholder="Password" required>                                        
                     </div>
                     <br> 
                     <div class="input-group register">
-                        <span class="input-group-addon text-center"> Confirm Password </span>
-                        <input type="password" class="form-control register" name="confirmPwd" 
+                        <span class="input-group-addon register text-center"> Confirm Password </span>
+                        <input type="password" class="form-control register" ng-model="confirmPwd" 
                         placeholder="Confirm Password" required>                                        
                     </div>                                                             
                     <div class="form-group">
