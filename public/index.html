@@ -35,7 +35,7 @@
     </head>
     <body>
         <div ng-controller="CollapseController">
-    		<div class="container pl-0 pr-0">
+    		<div class="pl-0 pr-0">
     			<nav class="navbar navbar-inverse navbar-fixed-top navbar-toggleable-md" role="navigation">
     				<div class="navbar-header">
                         <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
@@ -53,30 +53,30 @@
     						<li><a href="#">Tours</a></li>
     						<li><a href="#!/showcase">Products</a></li>
     						<li><a href="#">About</a></li>
-    						<li><a href="#">Contacts</a></li>
-                            <li><a href="#!/profile">TempProfile</a></li>
-                            <li><a href="#!/seller">TempSeller</a></li>
+    						<li><a href="#!contact">Contacts</a></li>
+                <li><a href="#!/profile">TempProfile</a></li>
+                <li><a href="#!/seller">TempSeller</a></li>
     					</ul>
-                        <ul class="nav navbar-nav navbar-right">
-                          <li>
-                            <form class="navbar-form">
-                                <div ng-controller="DropdownJoin">
-                                    <div class="btn-group join" uib-dropdown is-open="status.isopen">
-                                      <button id="single-button" type="button" class="btn btn-primary join" uib-dropdown-toggle ng-disabled="disabled">
-                                        Join Us <span class="caret"></span>
-                                      </button>
-                                      &nbsp;
-                                      &nbsp;
-                                      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                                        <li><a href="#!/Login">Login</a></li>
-                                       <li class="divider"></li>
-                                        <li><a href="#!/Register">Register</a></li>
-                                      </ul>
-                                    </div>
-                                </div>
-                            </form>
-                          </li>
-                        </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <form class="navbar-form">
+                      <div ng-controller="DropdownJoin">
+                          <div class="btn-group join" uib-dropdown is-open="status.isopen">
+                            <button id="single-button" type="button" class="btn btn-primary join" uib-dropdown-toggle ng-disabled="disabled">
+                              Join Us <span class="caret"></span>
+                            </button>
+                            &nbsp;
+                            &nbsp;
+                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                              <li><a href="#!/login">Login</a></li>
+                             <li class="divider"></li>
+                              <li><a href="#!/register">Register</a></li>
+                            </ul>
+                          </div>
+                      </div>
+                  </form>
+                </li>
+              </ul>
     				</div>
     			</nav>
     		</div>

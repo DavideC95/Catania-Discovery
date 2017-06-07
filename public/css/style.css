@@ -1,6 +1,21 @@
-.row {
-    margin-right: 0px;
-    margin-left: 0px;
+/* Contact page */
+.contact {
+  background-image: url("../images/food3.jpg");
+  width: 100%;
+  top: 0;
+  left: 0;
+  height:100%;
+  opacity: 0.6;
+  position: fixed;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  padding: 0;
+  margin: 0;
+  z-index:0;}
+
+.info {
+  background-color: rgba(255,255,255,0.9);
+  border-radius: 2em;
 }
 
 .mb-5 {
@@ -186,12 +201,14 @@
   margin-left: 45px;
 }
 
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height: auto;}
+}
 
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height: auto;}
-    }
+.inline { display: inline; }
+.middle { vertical-align: middle; }
