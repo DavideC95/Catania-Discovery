@@ -171,11 +171,23 @@
 }
 
 .btn.btn-default.submit{
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .container.Register{
   margin-top: 100px;
+}
+
+.input-group-addon{
+  width: 145px;
+}
+
+.form-control.register{
+  width: 300px;
+}
+
+.input-group.register{
+  margin-left: 45px;
 }
 
 
