@@ -6,10 +6,9 @@ app.controller('CarouselController', function ($scope) {
   var slides = $scope.slides = [];
   var currIndex = 0;
 
-  $scope.addSlide = function() {
-    var newWidth = 600 + slides.length + 1;
+  $scope.addSlide = function(i) {
     slides.push({
-      image: '//unsplash.it/' + newWidth + '/300',
+      image: "images/carousel/" + i + ".jpeg",
       text: ['Description','Description','Description','Description'][slides.length % 4],
       id: currIndex++
     });
@@ -20,12 +19,10 @@ app.controller('CarouselController', function ($scope) {
     assignNewIndexesToSlides(indexes);
   };
 
-  for (var i = 0; i < 4; i++) {
-    $scope.addSlide();
-  }
+  for (var i = 0; i < 4; i++)
+    $scope.addSlide(i);
 
   // Randomize logic below
-
   function assignNewIndexesToSlides(indexes) {
     for (var i = 0, l = slides.length; i < l; i++) {
       slides[i].id = indexes.pop();

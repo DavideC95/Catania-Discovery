@@ -8,21 +8,14 @@
 
         <title>Angular-Bootstrap-Template</title>
 
-        <!-- JavaScript Lib-->
+        <!-- JavaScript Lib -->
         <script src="lib/js/jquery.min.js"></script>
         <script src="lib/js/angular.min.js"></script>
         <script src="lib/js/angular-ui-router.min.js"></script>
         <script src="lib/js/ui-bootstrap.min.js"></script>
         <script src="lib/js/bootstrap.min.js"></script>
-        
-        <!--
         <script src="lib/js/angular-ui-notification.min.js"></script>
         <script src="lib/js/ngStorage.min.js"></script>
-        -->
-
-        <!-- Librerie temporanee -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-notification/0.3.6/angular-ui-notification.min.js"></script>
 
         <!-- JS -->
         <script src="js/app.js"></script>
@@ -35,15 +28,15 @@
         <script src="js/controllers/homeElementsController.js"></script>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="lib/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="lib/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="lib/css/bootstrap.min.css"/>
 
-        <link href="css/style.css" rel="stylesheet" type="text/css"/> 
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div ng-controller="CollapseController">
     		<div class="container pl-0 pr-0">
-    			<nav class="navbar navbar-inverse navbar-fixed-top navbar-toggleable-md" role="navigation">	
+    			<nav class="navbar navbar-inverse navbar-fixed-top navbar-toggleable-md" role="navigation">
     				<div class="navbar-header">
                         <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
                             <span class="sr-only">Toggle navigation</span>
@@ -51,8 +44,8 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-    					
-                        <a class="navbar-brand" href="#">Catania Discovery</a> 
+
+                        <a class="navbar-brand" href="#">Catania Discovery</a>
     				</div>
 
     				<div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
@@ -69,9 +62,11 @@
                             <form class="navbar-form">
                                 <div ng-controller="DropdownJoin">
                                     <div class="btn-group join" uib-dropdown is-open="status.isopen">
-                                      <button id="single-button" type="button" class="btn btn-default join" uib-dropdown-toggle ng-disabled="disabled">
+                                      <button id="single-button" type="button" class="btn btn-primary join" uib-dropdown-toggle ng-disabled="disabled">
                                         Join Us <span class="caret"></span>
                                       </button>
+                                      &nbsp;
+                                      &nbsp;
                                       <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
                                         <li><a href="#!/Login">Login</a></li>
                                        <li class="divider"></li>
@@ -83,12 +78,10 @@
                           </li>
                         </ul>
     				</div>
-    			</nav> 
+    			</nav>
     		</div>
         </div> <!-- Fine della navbar e controller -->
         <br>
-		<div ui-view >
-		  
-		</div> 
+		  <div ui-view></div>
     </body>
 </html>

@@ -1,5 +1,7 @@
-var app = angular.module('app', [ 'ui.router', 'ui-notification',
-                                  'ngStorage','ui.bootstrap']);
+var app = angular.module('app', [ 'ui.router',
+                                  'ui-notification',
+                                  'ngStorage',
+                                  'ui.bootstrap']);
 
 app.controller('homeController', function ($scope) {
   $scope.helloworld = "Hello world by AngularJS";
@@ -19,8 +21,3 @@ app.controller('profileController', function ($scope,$http) {
 app.controller('sellerController', function ($scope,$http) {
 	$scope.helloworld = "Hello world by AngularJS";
 });
-
-
-
-
-

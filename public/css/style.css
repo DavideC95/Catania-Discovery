@@ -142,7 +142,7 @@
 /* Height for the seller page */
 .row.content.seller {
   height: 500px;
-}   
+}
 
 /* Height for the profile page */
 .row.content.user {
@@ -159,10 +159,6 @@
 .sidenav.seller {
   background-color: #f1f1f1;
   height: 600px;
-}
-
-.btn.btn-default.join{
-  margin-right: 15px;
 }
 
 /*Login Page */
@@ -197,5 +193,5 @@
         height: auto;
         padding: 15px;
       }
-      .row.content {height: auto;} 
+      .row.content {height: auto;}
     }
