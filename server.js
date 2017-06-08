@@ -121,6 +121,25 @@ apiRoutes.get("/cities", function(req, res){
 });
 
 /*
+ * /offers
+ *
+ * user_id: to filter the offers by user_id [string]
+ */
+apiRoutes.get("/offers", function(req, res) {
+
+  var filter = "";
+
+  if (req.query.user_id)
+    filter = { user_id: req.query.user_id };
+
+  Offer.find(filter, function(err, offers){
+   if (err)
+     throw(err);
+  });
+
+});
+
+/*
  * /new_offer
  *
  * price:       price of the offer [float]
