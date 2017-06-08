@@ -42,12 +42,18 @@
                         <input type="password" class="form-control register" ng-model="password"
                             placeholder="Password" required>
                     </div>
-                    <br>
-                    <div class="input-group register">
-                        <span class="input-group-addon register text-center"> Confirm Password </span>
-                        <input type="password" class="form-control register" ng-model="confirmPwd"
-                        placeholder="Confirm Password" required>
+                    <hr>
+                    <div class="row text-center">
+                        <div ng-controller="checkStatusController">
+                            <button type="button" class="btn btn-warning" ng-model="checkType.tourist" uib-btn-checkbox>
+                                Tourist
+                            </button>
+                            <button type="button" class="btn btn-warning" ng-model="checktype.seller" uib-btn-checkbox>
+                                Seller
+                            </button>
+                        </div>
                     </div>
+                    <hr>
                     <div class="form-group">
                         <div class="col-sm-12 controls text-center">
                           <br>
