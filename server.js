@@ -105,6 +105,57 @@ apiRoutes.post('/authenticate', function(req, res) {
 });
 
 /*
+ * /cities
+ *
+ * it shows all the cities/provinces in the database
+ */
+apiRoutes.get("/cities", function(req, res){
+
+  City.find({}, function(err, cities){
+   if (err)
+     throw(err);
+
+     res.json(cities);
+  });
+
+});
+
+/*
+ * /new_offer
+ *
+ * price:       price of the offer [float]
+ * description: description of the offer [string]
+ * image_path:  image_path of the offer [string]
+ * city_id:     id of the city [number]
+ */
+apiRoutes.post("/new_offer", function(req, res){
+  if (!req.body.price || !req.body.description || !req.body.image_path)
+    return res.json({
+      success: false,
+      message: "You've to fill all the fields."
+    });
+
+    /* MISSING token, so user  */
+
+    var offer = new Offer({
+      price:        req.body.price,
+      description:  req.body.description,
+      image_path:   req.body.image_path,
+      city_id:      req.body.city
+    });
+
+    offer.save(function(err) {
+      if (err) throw err;
+
+      res.json({
+        success: true,
+        message: "Offer registered successfully!"
+      })
+    });
+
+});
+
+/*
  * /register
  *
  * nickname:  nickname of the user [string]
@@ -115,27 +166,25 @@ apiRoutes.post('/authenticate', function(req, res) {
  * name:      name of the user  [string]
  */
 apiRoutes.post('/register', function(req, res, next){
-  console.log(req.body.nickname +"  "+req.body.password+"  "+req.body.email);
-  if(!req.body.nickname || !req.body.password || !req.body.email)
+  if (!req.body.nickname || !req.body.password || !req.body.email)
     res.json({
       success: false,
       message: "You've to fill all the fields."
     });
   else
     next();
-},function(req,res, next){
+  },function(req,res, next){
     User.find({email: req.body.email}, function(err, users){
-      if(err)
-        throw(err);
-      if(users[0]){
+      if (err) throw(err);
+
+      if (users[0]) {
         return res.json({
           success: false,
           message: "this email is already registered"
         });
       }
-      else{
+      else
         next();
-      }
     });
   },function(req, res, next){
       User.find({nickname: req.body.nickname}, function(err, users) {
@@ -146,9 +195,8 @@ apiRoutes.post('/register', function(req, res, next){
             success: false,
             message: "This nickname already exist."
           });
-        else{
+        else
           next();
-        }
       });
   },function(req, res, next){
     var nick = new User({
@@ -165,6 +213,7 @@ apiRoutes.post('/register', function(req, res, next){
     // save the sample user
     nick.save(function(err) {
       if (err) throw err;
+
       res.json({
         success: true,
         message: "User registered successfully!"
@@ -264,6 +313,31 @@ apiRoutes.get('/verify', function(req,res){
         success: true,
         message: "Valid nickname"
       })
+   });
+ });
+
+ apiRoutes.get('/get_user_details', function(req, res){
+   User.find({ nickname: req.query.nickname }, function(err, users){
+    if (err)
+      throw(err);
+
+    if (users[0]) {
+      res.json({
+        _id: users[0]._id,
+        nickname: users[0].nickname,
+        name: users[0].name,
+        surname: users[0].surname,
+        email: users[0].email,
+        phone: users[0].phone,
+        propic: users[0].propic,
+        seller: users[0].seller
+      });
+    }
+    else
+      res.json({
+        success: false,
+        message: "User " + req.query.nickname + " not found"
+      });
    });
  });
 
