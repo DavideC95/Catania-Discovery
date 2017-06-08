@@ -23,7 +23,7 @@ app.controller('registerController', function ($scope,$http, $state, Notificatio
         if (res.data.success) {
           Notification.success(res.data.message);
           $scope.alertMessage = res.data.message;
-//          $state.go("home");
+          $state.go("home");
         }
         else {
           Notification.error(res.data.message);
@@ -32,11 +32,9 @@ app.controller('registerController', function ($scope,$http, $state, Notificatio
       },
       function(err) {
         Notification.error("Error!");
-        $scope.alertMessage = "Registered successfully! Check email!";
       }
     );
 
   };
-
 
 });
