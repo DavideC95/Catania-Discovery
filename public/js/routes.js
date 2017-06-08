@@ -8,12 +8,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state("login", {
       url: "/login",
       templateUrl: "partials/login.html",
-      controller:"LoginController"
+      controller:"loginController"
     })
     .state("register", {
       url: "/register",
       templateUrl: "partials/register.html",
-      controller: "RegisterController"
+      controller: "registerController"
     })
     .state("profile", {
       url: '/profile',

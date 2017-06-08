@@ -1,6 +1,7 @@
 module.exports = {
     'secret': 'secretstring',
-    'database': 'mongodb://cytoscape:sK0tMWUfzNkfOzx9FNrccGjhtkwPU0l0tH2GeC9stMEWKmKjfQzwThuXKGYozheLsMhbw3pnJocZrKMuAcgFpA==@cytoscape.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false',
+    'database': 'mongodb://localhost:27017/cytoscape',
     'email': 'azurecytoscape@gmail.com',
-    'password': 'mCG-2v8-Lub-rFm'
+    'password': 'mCG-2v8-Lub-rFm',
+    'home_path': 'http://localhost:8080'
 };

@@ -213,3 +213,13 @@
 
 .inline { display: inline; }
 .middle { vertical-align: middle; }
+
+.no-selected {
+  border: 5px solid transparent;
+  transition: 0.5s all;
+}
+
+.selected {
+  border: 5px solid #009688 !important;
+  transition: 0.5s all;
+}

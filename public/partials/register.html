@@ -5,21 +5,20 @@
                 <div class="panel-title text-center"> Please complete all the fields </div>
             </div>
             <div class="panel-body" >
-                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST">
+                <form class="form-horizontal" ng-submit="registerUser()">
                     <div class="input-group register">
-                        <span class="input-group-addon register"> Name </span>
+                        <span class="input-group-addon register">Name</span>
                         <input type="text" class="form-control register" ng-model="name" placeholder="First Name" required>
                     </div>
                     <br>
                     <div class="input-group register">
-                        <span class="input-group-addon register"> Surname </span>
+                        <span class="input-group-addon register">Surname</span>
                         <input type="text" class="form-control register" ng-model="surname" placeholder="Last Name" required>
                     </div>
                     <br>
                     <div class="input-group register">
-                        <span class="input-group-addon register text-center"> E-mail </span>
-                        <input type="email" class="form-control register" ng-model="e-mail"
-                        placeholder="example@gmail.com" required>
+                      <span class="input-group-addon register text-center">E-mail</span>
+                      <input type="email" class="form-control register" ng-model="email" placeholder="example@gmail.com" required>
                     </div>
                     <br>
                     <div class="input-group register">
@@ -28,38 +27,31 @@
                     </div>
                     <br>
                     <div class="input-group register">
-                        <span class="input-group-addon register text-center"> Birth </span>
-                        <input type="date" class="form-control register" ng-model="birth">
+                      <span class="input-group-addon register text-center">Birth</span>
+                      <input type="text" class="form-control register" ng-model="birth">
                     </div>
                     <hr>
                     <div class="input-group register">
-                        <span class="input-group-addon register text-center">Username</span>
-                        <input type="text" class="form-control register" ng-model="nickname" placeholder="Username" required>
+                      <span class="input-group-addon register text-center">Username</span>
+                      <input type="text" class="form-control register" ng-model="nickname" placeholder="Username" required>
                     </div>
                     <br>
                     <div class="input-group register">
-                        <span class="input-group-addon register text-center"> Password </span>
-                        <input type="password" class="form-control register" ng-model="password"
-                            placeholder="Password" required>
+                      <span class="input-group-addon register text-center"> Password </span>
+                      <input type="password" class="form-control register" ng-model="password" placeholder="Password" required>
                     </div>
                     <hr>
                     <div class="row text-center">
-                        <div ng-controller="checkStatusController">
-                            <button type="button" class="btn btn-warning" ng-model="checkType.tourist" uib-btn-checkbox>
-                                Tourist
-                            </button>
-                            <button type="button" class="btn btn-warning" ng-model="checktype.seller" uib-btn-checkbox>
-                                Seller
-                            </button>
-                        </div>
+                      <button type="button" class="btn btn-warning no-selected {{ seller ? '' : 'selected' }}" ng-value="false" ng-model="seller" uib-btn-checkbox>
+                          Tourist
+                      </button>
+                      <button type="button" class="btn btn-warning no-selected {{ !seller ? '' : 'selected' }}" ng-value="true" ng-model="seller" uib-btn-checkbox>
+                          Seller
+                      </button>
                     </div>
                     <hr>
-                    <div class="form-group">
-                        <div class="col-sm-12 controls text-center">
-                          <br>
-                            <button type="submit" href="#!/home" class="btn btn-primary submit"> Register
-                            </button>
-                        </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary btn-lg submit">Register</button>
                     </div>
                 </form>
             </div>
