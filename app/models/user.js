@@ -9,8 +9,9 @@ module.exports = mongoose.model('User', new Schema({
   surname: String,
 	password: String,
 	email: String,
-  date: { type: Date, default: Date.now },
+  phone: String,
+  date: String,
   propic: String,
-  tourist_seller: Boolean,
+  seller: Boolean,
 	blocked: Boolean
 }));

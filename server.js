@@ -107,9 +107,12 @@ apiRoutes.post('/authenticate', function(req, res) {
 /*
  * /register
  *
- * name:      name of the user [string]
+ * nickname:  nickname of the user [string]
  * password:  password of the user [string]
  * email:     email of the user [string]
+ * phone:     phone of the user [string]
+ * date:      birthdate of the user
+ * name:      name of the user  [string]
  */
 apiRoutes.post('/register', function(req, res, next){
   console.log(req.body.nickname +"  "+req.body.password+"  "+req.body.email);
@@ -154,8 +157,8 @@ apiRoutes.post('/register', function(req, res, next){
       surname: req.body.surname,
       password: req.body.password,
       email: req.body.email,
-      propic: req.body.propic,
-      tourist_seller: req.body.tourist_seller,
+      phone: req.body.phone,
+      seller: req.body.seller,
       blocked: true
     });
 
@@ -182,7 +185,7 @@ apiRoutes.post('/register', function(req, res, next){
     var mailOptions = {
       from: config.email,
       to: nick.email,
-      subject: 'Verify your Countryless account!',
+      subject: 'Verify your Discovery Catania account!',
       text: verify
     };
 
@@ -208,11 +211,11 @@ apiRoutes.post('/register', function(req, res, next){
 /*
  * /verify route to verify an user's email
  *
- * user_id: user's id that needs to be verified [string]
+ * token: user's token [string]
  */
 apiRoutes.get('/verify', function(req,res){
   var id_token = req.query.token;
-  console.log(id_token);
+  console.log("XX##########"+id_token);
   User.update({"_id": id_token}, {"$set": {"blocked": false}}, function(err){
     if(err)
       throw(err);
