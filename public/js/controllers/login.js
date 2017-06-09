@@ -11,8 +11,8 @@ app.controller('loginController', function ($scope, $rootScope, $state, $http, $
     $http({
       method: 'POST',
       url: app.path + "api/authenticate",
-      data: $.param({ 
-                      name: $scope.nickname, 
+      data: $.param({
+                      nickname: $scope.nickname,
                       password: $scope.password
                        }),
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -20,8 +20,8 @@ app.controller('loginController', function ($scope, $rootScope, $state, $http, $
       function(res) {
         if (res.data.success) {
           $localStorage.user = {
-                                 token : res.data.token, 
-                                 name : $scope.nickname
+                                 token : res.data.token,
+                                 nickname : $scope.nickname
                                };
           $rootScope.user = $localStorage.user;
           $state.go("home");

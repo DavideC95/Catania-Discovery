@@ -131,14 +131,6 @@
 	margin-top: 50px;
 }
 
-.profileModifier{
-	margin-top: 50px;
-}
-
-.sellerModifier{
-	margin-top: 50px;
-}
-
 .titleSeller{
 	font-size: 400%;
 }
@@ -160,21 +152,12 @@
   height: 500px;
 }
 
-/* Height for the profile page */
-.row.content.user {
-  height: 500px;
-}
-
-
 /* Set gray background color and 100% height */
-.sidenav.user {
+.user {
   background-color: #f1f1f1;
-  height: 700px;
-}
+  padding: 10px;
 
-.sidenav.seller {
-  background-color: #f1f1f1;
-  height: 600px;
+  border-radius: 1em;
 }
 
 /*Login Page */
@@ -222,4 +205,11 @@
 .selected {
   border: 5px solid #009688 !important;
   transition: 0.5s all;
+}
+
+/* Profile */
+.boxed {
+  background-color: #fff;
+
+  padding: 15px 10px;
 }

@@ -1,26 +1,52 @@
-<div class="profileModifier">
 <div class="container-fluid">
-  <div class="row content user">
-    <div class="col-sm-3 col-sm-offset-1 sidenav user">
-      <h2 class="text-center"> Davide Costa </h2>
-      <br>
-      <div class="text-center">
-        <img src="images/blank-profile.jpg" class="img-circle center" width="250" height="240">
-        <a>Update Your Profile Image! </a>
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+
+    <div class="col-sm-3 col-sm-offset-1">
+      <div class="user">
+        <h2 class="text-center text-primary boxed">{{ userDetails.nickname }}</h2>
+
+        <div class="text-center boxed">
+          <img src="images/blank-profile.jpg" class="img-circle center" width="250" height="240">
+          <br>
+          <a>Update Your Profile Image!</a>
+        </div>
+
+        <br>
+
+        <ul class="nav nav-pills nav-stacked boxed">
+          <li>
+            <h3>
+              <span class="text-primary">Name:</span> <span class="text-info">{{ userDetails.name }}</span>
+            </h3>
+          </li>
+          <li>
+            <h3>
+              <span class="text-primary">Surname:</span> <span class="text-info">{{ userDetails.surname }}</span>
+            </h3>
+          </li>
+          <li>
+            <h3>
+              <i class="glyphicon glyphicon-envelope text-primary"></i>
+              <span class="text-info">&nbsp; {{ userDetails.email }}</span>
+            </h3>
+          </li>
+          <li>
+            <h3>
+              <i class="glyphicon glyphicon-earphone text-primary"></i>
+              <span class="text-info">&nbsp; {{ userDetails.phone }}</span>
+            </h3>
+          </li>
+        </ul>
+
+        <br>
       </div>
+
       <br>
-      <br>
-      <br>
-      <br>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><p>Email</p></li>
-        <li><p>Esempio di dati</p></li>
-        <li><p>Esempio di altri dati</p></li>
-        <li><p>Esempio di altri ancora </p></li>
-      </ul>
-      <br>
-      <br>
-      <br>
+
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Potrebbe servire una ricerca?">
         <span class="input-group-btn">
@@ -29,6 +55,7 @@
           </button>
         </span>
       </div>
+
     </div>
 
     <div class="col-sm-7">
