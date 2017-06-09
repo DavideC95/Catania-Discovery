@@ -65,7 +65,7 @@ apiRoutes.post('/authenticate', function(req, res) {
     if (!user) {
       res.json({
         success: false,
-        message: 'Authentication failed. User not found.'
+        message: 'Login failed. User not found.'
       });
     }
     else if(user.blocked){
@@ -80,7 +80,7 @@ apiRoutes.post('/authenticate', function(req, res) {
       if (user.password != req.body.password) {
         res.json({
           success: false,
-          message: 'Authentication failed. Wrong password.'
+          message: 'Login failed. Wrong password.'
         });
       }
       else {
@@ -94,7 +94,7 @@ apiRoutes.post('/authenticate', function(req, res) {
         // return the information including token as JSON
         res.json({
           success: true,
-          message: 'Enjoy your token!',
+          message: 'Now you are Logged!',
           token: token
         });
       }
