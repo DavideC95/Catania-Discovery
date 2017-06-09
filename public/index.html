@@ -2,11 +2,11 @@
 <html ng-app="app">
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="Angular-Bootstrap-Template">
-        <meta name="author" content="Tkd-Alex">
+        <meta name="description" content="Catania Discovery">
+        <meta name="author" content="Stefano Borzì, Davide Costa, Danilo Tascone">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Angular-Bootstrap-Template</title>
+        <title>Catania Discovery</title>
 
         <!-- JavaScript Lib -->
         <script src="lib/js/jquery.min.js"></script>
@@ -58,7 +58,7 @@
                 <li><a href="#!/seller">TempSeller</a></li>
     					</ul>
               <ul class="nav navbar-nav navbar-right">
-                <li>
+                <li ng-show="(user == '' || user == null || user.token == '')">
                   <form class="navbar-form">
                       <div ng-controller="DropdownJoin">
                           <div class="btn-group join" uib-dropdown is-open="status.isopen">
@@ -85,6 +85,9 @@
                           </div>
                       </div>
                   </form>
+                </li>
+                <li ng-show="!(user == '' || user == null || user.token == '')">
+                  <a href="">{{ user.nickname }}</a>
                 </li>
               </ul>
     				</div>
