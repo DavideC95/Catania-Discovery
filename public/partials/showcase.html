@@ -1,11 +1,11 @@
-<div class="showcaseModifier">
-<div class="container pl-0 pr-0">	
+<div class="container pl-0 pr-0">
+	<br><br><br>
 	<div ng-controller="showCaseController">
-		<ul class="list-group"> 
+		<ul class="list-group">
 		  <li class="list-group-item" ng-repeat="x in myData">
 			<div>
 				<img class="cartImages img-thumbnail" src="{{x.images[0]}}">
-				<div>  
+				<div>
 					<span>{{x.productName}}</span>
 					<span>Offered By: {{x.vendorName}} </span>
 					<p>Description of the product:{{x.description}}</p>
@@ -17,5 +17,4 @@
 		  </li>
 		</ul>
 	</div>
-</div>
 </div>

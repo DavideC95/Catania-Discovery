@@ -346,6 +346,7 @@ apiRoutes.get('/verify', function(req,res){
         nickname: users[0].nickname,
         name: users[0].name,
         surname: users[0].surname,
+        description: users[0].description,
         email: users[0].email,
         phone: users[0].phone,
         propic: users[0].propic,
@@ -361,7 +362,6 @@ apiRoutes.get('/verify', function(req,res){
  });
 
 // route middleware to verify a token
-/*
 apiRoutes.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token
@@ -392,7 +392,53 @@ apiRoutes.use(function(req, res, next) {
 
   }
 });
-*/
+
+// #### API PROTECTED ####
+
+/*
+ * /update_details
+ *
+ * name:        user's name [string]
+ * surname:     user's surname [string]
+ * description: user's description/biography [string]
+ * phone:       user's phone [string]
+ */
+apiRoutes.post('/update_details', function(req, res, next){
+
+  var token = req.body.token;
+
+  jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+    if (err) {
+      return res.json({ success: false, message: 'Failed to authenticate token.' });
+    }
+    else {
+      req.id = decoded._doc._id;
+      req.nickname = decoded._doc.nickname;
+      next();
+    }
+  });
+},function(req, res){
+
+  User.update({"_id": req.id}, {"$set":
+    {
+      "name": req.body.name,
+      "surname": req.body.surname,
+      "phone": req.body.phone,
+      "description": req.body.description
+    }
+  }, function(err){
+     if (err)
+      throw(err);
+     else {
+       res.json({
+         success: true,
+         message: "Details updated!"
+       });
+     }
+   });
+
+});
+
 
 // =======================
 // start the server ======

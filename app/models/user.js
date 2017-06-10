@@ -11,5 +11,6 @@ module.exports = mongoose.model('User', new Schema({
   date: String,
   propic: String,
   seller: Boolean,
-	blocked: Boolean
+	blocked: Boolean,
+  description: String
 }));

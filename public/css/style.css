@@ -1,3 +1,17 @@
+/* Generic classes */
+.inline { display: inline; }
+.middle { vertical-align: middle; }
+
+.no-selected {
+  border: 5px solid transparent;
+  transition: 0.5s all;
+}
+
+.selected {
+  border: 5px solid #009688 !important;
+  transition: 0.5s all;
+}
+
 /* Contact page */
 .contact {
   background-image: url("../images/food3.jpg");
@@ -115,14 +129,6 @@
 	font-size: 200%;
 }
 
-.homeModifier{
-	margin-top: 50px;
-}
-
-.showcaseModifier{
-	margin-top: 50px;
-}
-
 .titleSeller{
 	font-size: 400%;
 }
@@ -139,11 +145,6 @@
 }
 
 
-/* Height for the seller page */
-.row.content.seller {
-  height: 500px;
-}
-
 /* Set gray background color and 100% height */
 .user {
   background-color: #f1f1f1;
@@ -152,7 +153,7 @@
   border-radius: 1em;
 }
 
-/*Login Page */
+/*Login/Register Page */
 .container.Login{
   margin-top: 100px;
 }
@@ -177,31 +178,44 @@
   margin-left: 45px;
 }
 
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-  .sidenav {
-    height: auto;
-    padding: 15px;
-  }
-  .row.content {height: auto;}
-}
-
-.inline { display: inline; }
-.middle { vertical-align: middle; }
-
-.no-selected {
-  border: 5px solid transparent;
-  transition: 0.5s all;
-}
-
-.selected {
-  border: 5px solid #009688 !important;
-  transition: 0.5s all;
-}
-
 /* Profile */
 .boxed {
   background-color: #fff;
 
   padding: 15px 10px;
+}
+
+.edit-image {
+  position: relative;
+}
+
+.edit-image i {
+  position: absolute;
+  margin: 90px 0px 0px 95px;
+
+  font-size: 60px;
+  font-weight: bold;
+
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.edit-image:hover i {
+  z-index: 1;
+
+  cursor: pointer;
+
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.edit-image .propic {
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.edit-image:hover .propic {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.5s;
 }
