@@ -8,6 +8,7 @@ var morgan      = require('morgan');
 var mongoose    = require('mongoose');
 var fs          = require('fs');
 var nodemailer  = require('nodemailer');
+var fileUpload  = require('express-fileupload');
 
 var jwt       = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config    = require('./config'); // get our config file
@@ -32,6 +33,9 @@ app.use(express.static('public'));
 
 // use morgan to log requests to the console
 app.use(morgan('dev'));
+
+// use express-fileupload to upload file
+app.use(fileUpload());
 
 // ######### API ROUTES #########
 
@@ -366,6 +370,7 @@ apiRoutes.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  console.log("test " + req.body.token);
 
   // decode token
   if (token) {
@@ -439,6 +444,52 @@ apiRoutes.post('/update_details', function(req, res, next){
 
 });
 
+/*
+ * /upload_img
+ * sampleFile: file.js that contain the script
+ */
+apiRoutes.post('/upload_img', function(req, res, next) {
+  if (!req.files) {
+    return res.json({
+      success: false,
+      message: "No file provided"
+    });
+  }
+
+  var token = req.body.token;
+
+  jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+    if (err)
+      return res.json({ success: false, message: 'Failed to authenticate token.' });
+    else {
+      req.id = decoded._doc._id;
+      next();
+    }
+  });
+}, function(req, res) {
+  let sampleFile = req.files.sampleFile;
+
+   //use the mv() method to place the file on server directory
+   sampleFile.mv('./public/images/propic/' + sampleFile.name, function(err){
+     if(err)
+       throw err;
+     else {
+       User.update({"_id": req.id}, {"$set": { "propic": "images/propic/" + sampleFile.name } }, function(err){
+        if (err)
+          throw(err);
+        else {
+
+          res.json({
+          success: true,
+          message: "Picture updated!"
+          });
+        }
+      });
+
+     }
+   });
+
+});
 
 // =======================
 // start the server ======

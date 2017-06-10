@@ -1,7 +1,9 @@
 var app = angular.module('app', [ 'ui.router',
                                   'ui-notification',
                                   'ngStorage',
-                                  'ui.bootstrap']);
+                                  'ui.bootstrap',
+                                  'ngFileUpload',
+                                  'angular-loading-bar']);
 
 
 app.run(function($rootScope, $localStorage){

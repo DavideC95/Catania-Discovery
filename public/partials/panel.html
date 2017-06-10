@@ -8,9 +8,24 @@
       <div class="user">
         <h2 class="text-center text-primary boxed">{{ userDetails.nickname }}</h2>
 
-        <div class="text-center boxed edit-image">
+        <div class="text-center boxed edit-image text-center" OnClick="document.getElementById('file').click()">
           <i class="glyphicon glyphicon-camera"></i>
-          <img src="images/blank-profile.jpg" class="img-circle center propic" width="250" height="240">
+          <img src="images/propic/default.jpg" class="center propic img-responsive" ngf-src="f == null ? 'images/propic/default.jpg' : f">
+        </div>
+
+        <br>
+
+        <button type="file" ngf-select="setFile($file, $invalidFiles)" accept=".png, .bmp, .jpeg, .jpg" id="file" style="display: none">
+          Select File
+        </button>
+
+        <div class="text-center">
+          <button class="btn btn-md btn-success" ng-show="f.name != null && f.name != ''" ng-click="uploadFile(f, errFile)">
+            <h4>
+              <i class="glyphicon glyphicon-save-file"></i>
+              Save image
+            </h4>
+          </button>
         </div>
 
         <br>
