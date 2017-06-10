@@ -19,7 +19,6 @@ app.controller('showCaseController', function ($scope,$http) {
 });
 
 app.controller('profileController', function ($rootScope, $scope, $http) {
-
   if ($rootScope.user) {
     $http.get(app.path + "api/get_user_details?nickname=" + $rootScope.user.nickname)
       .then(function(res) {

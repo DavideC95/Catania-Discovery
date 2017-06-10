@@ -1,4 +1,4 @@
-// ############   Modulo per la gestione del carousel della pagina relativa a un seller. ############
+// Seller module to manage the carousel
 app.controller('CarouselController', function ($scope) {
   $scope.myInterval = 5000;
   $scope.noWrapSlides = true;
@@ -51,9 +51,9 @@ app.controller('CarouselController', function ($scope) {
 
     return array;
   }
-}); /* FINE CAROUSEL */
+}); /* end carousel */
 
-//Controller gestione Rating Seller
+// Controller gestione Rating Seller
 app.controller('RatingController', function ($scope) {
   $scope.rate = 7; //Valore attuale preimpostato del rating
   $scope.max = 10;

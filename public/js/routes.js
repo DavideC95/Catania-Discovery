@@ -29,10 +29,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "partials/seller.html",
       controller:"sellerController"
     })
-    .state('initial', {
-      url: '/home',
-      templateUrl: 'partials/home.html',
-      controller: 'homeController'
+    .state("panel", {
+      url: '/panel',
+      templateUrl: "partials/panel.html",
+      controller: "panelController"
     })
     .state("showcase", {
   	  url: "/showcase",

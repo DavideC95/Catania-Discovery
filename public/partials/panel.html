@@ -1,11 +1,9 @@
 <div class="container-fluid">
-  <br>
-  <br>
-  <br>
+
+  <br><br>
 
   <div class="row">
-
-    <div class="col-sm-3 col-sm-offset-1">
+    <div class="col-sm-4 col-sm-offset-4">
       <div class="user">
         <h2 class="text-center text-primary boxed">{{ userDetails.nickname }}</h2>
 
@@ -15,48 +13,43 @@
 
         <br>
 
-        <ul class="nav nav-pills nav-stacked boxed">
-          <li>
-            <h3>
-              <span class="text-primary">Name:</span> <span class="text-info">{{ userDetails.name }}</span>
-            </h3>
-          </li>
-          <li>
-            <h3>
-              <span class="text-primary">Surname:</span> <span class="text-info">{{ userDetails.surname }}</span>
-            </h3>
-          </li>
-          <li>
-            <h3>
-              <i class="glyphicon glyphicon-envelope text-primary"></i>
-              <span class="text-info">&nbsp; {{ userDetails.email }}</span>
-            </h3>
-          </li>
-          <li>
-            <h3>
-              <i class="glyphicon glyphicon-earphone text-primary"></i>
-              <span class="text-info">&nbsp; {{ userDetails.phone }}</span>
-            </h3>
-          </li>
-        </ul>
+        <form class="form-horizontal boxed">
+         <div class="form-group">
+           <label class="control-label col-sm-2 text-info" for="name">Name:</label>
+           <div class="col-sm-10">
+             <input type="text" class="form-control" id="name" ng-model="userDetails.name">
+           </div>
+         </div>
+         <div class="form-group">
+           <label class="control-label col-sm-2 text-info" for="surname">Surname:</label>
+           <div class="col-sm-10">
+             <input type="text" class="form-control" id="surname" ng-model="userDetails.surname">
+           </div>
+         </div>
+         <div class="form-group">
+           <label class="control-label col-sm-2 text-info" style="font-size: 20px" for="email">
+             <i class="glyphicon glyphicon-envelope"></i>
+           </label>
+           <div class="col-sm-10">
+             <input type="text" class="form-control" ng-value="userDetails.email" disabled="disabled">
+           </div>
+         </div>
+         <div class="form-group">
+           <label class="control-label col-sm-2 text-info" style="font-size: 20px" for="mobile">
+             <i class="glyphicon glyphicon-earphone text-info"></i>
+           </label>
+           <div class="col-sm-10">
+             <input type="text" id="mobile" class="form-control" ng-value="userDetails.phone">
+           </div>
+         </div>
+       </form>
 
         <br>
       </div>
 
-      <br>
-
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Potrebbe servire una ricerca?">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>
-
     </div>
 
-    <div class="col-sm-7">
+    <div class="col-sm-12">
       <h1 class="">RECENT ACTIVITIES</h1>
       <hr>
       <h2>I Love Food</h2>
@@ -74,5 +67,4 @@
       <hr>
     </div>
   </div>
-</div>
 </div>
