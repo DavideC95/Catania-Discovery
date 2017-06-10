@@ -131,7 +131,7 @@ apiRoutes.get("/cities", function(req, res){
  */
 apiRoutes.get("/offers", function(req, res) {
 
-  var filter = "";
+  var filter = {};
 
   if (req.query.user_id)
     filter = { user_id: req.query.user_id };
@@ -139,42 +139,9 @@ apiRoutes.get("/offers", function(req, res) {
   Offer.find(filter, function(err, offers){
    if (err)
      throw(err);
+
+     res.json(offers);
   });
-
-});
-
-/*
- * /new_offer
- *
- * price:       price of the offer [float]
- * description: description of the offer [string]
- * image_path:  image_path of the offer [string]
- * city_id:     id of the city [number]
- */
-apiRoutes.post("/new_offer", function(req, res){
-  if (!req.body.price || !req.body.description || !req.body.image_path)
-    return res.json({
-      success: false,
-      message: "You've to fill all the fields."
-    });
-
-    /* MISSING token, so user  */
-
-    var offer = new Offer({
-      price:        req.body.price,
-      description:  req.body.description,
-      image_path:   req.body.image_path,
-      city_id:      req.body.city
-    });
-
-    offer.save(function(err) {
-      if (err) throw err;
-
-      res.json({
-        success: true,
-        message: "Offer registered successfully!"
-      })
-    });
 
 });
 
@@ -370,7 +337,6 @@ apiRoutes.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  console.log("test " + req.body.token);
 
   // decode token
   if (token) {
@@ -399,6 +365,60 @@ apiRoutes.use(function(req, res, next) {
 });
 
 // #### API PROTECTED ####
+
+ /*
+  * /new_offer
+  *
+  * title:       title of the offer [string]
+  * description: description of the offer [string]
+  * price:       price of the offer [string]
+  */
+apiRoutes.post('/new_offer', function(req, res, next){
+
+  var token = req.body.token;
+
+  jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+    if (err)
+      return res.json({ success: false, message: 'Failed to authenticate token.' });
+    else {
+      req.id = decoded._doc._id;
+      req.nickname = decoded._doc.nickname;
+      next();
+    }
+  });
+
+}, function(req, res, next) {
+
+  User.find({ _id: req.id }, function(err, users) {
+    if (!users[0].seller)
+      return res.json({
+        success: false,
+        message: "You are not a seller!"
+      });
+    else
+      next();
+  });
+
+}, function(req, res) {
+  var offer = new Offer({
+    users_id: req.id,
+    user: req.nickname,
+    title: req.body.title,
+    price: req.body.price,
+    description: req.body.description
+  });
+
+  // save the offer
+  offer.save(function(err) {
+    if (err) throw err;
+
+    res.json({
+      success: true,
+      message: "Offer registered successfully!"
+    })
+  });
+
+});
 
 /*
  * /update_details

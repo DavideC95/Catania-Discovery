@@ -1,20 +1,14 @@
 <div class="container pl-0 pr-0">
 	<br><br><br>
-	<div ng-controller="showCaseController">
 		<ul class="list-group">
-		  <li class="list-group-item" ng-repeat="x in myData">
-			<div>
-				<img class="cartImages img-thumbnail" src="{{x.images[0]}}">
-				<div>
-					<span>{{x.productName}}</span>
-					<span>Offered By: {{x.vendorName}} </span>
-					<p>Description of the product:{{x.description}}</p>
-				</div>
-			</div>
+		  <li class="list-group-item" ng-repeat="offer in offers">
+				<img class="cartImages img-thumbnail" src="images/gem-01.jpg">
+				<h3 class="text-primary">{{ offer.title }}</h3>
+				<p><b class="text-info">Offered By:</b> <a ng-href="#!/profile/{{ offer.user_id }}">{{ offer.user }}</a></p>
+				<p><b class="text-info">Description:</b> {{ offer.description }}</p>
 			<button type="button" class="btn btn-primary btn-md buttons-size-2">Explore in Detail</button>
 			<button type="button" class="btn btn-danger btn-md buttons-size-2" >Buy</button>
 			<button type="button" class="btn btn-success btn-md buttons-size-2">Contact The Vendor</button>
 		  </li>
 		</ul>
-	</div>
 </div>

@@ -1,0 +1,39 @@
+<div class="container">
+
+  <br><br><br>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <h2 class="text-center text-primary">Make your offer!</h2>
+
+      <form class="form-horizontal boxed" ng-submit="saveOffer()">
+       <div class="form-group">
+         <label class="control-label col-sm-2 text-info" for="title">Title:</label>
+         <div class="col-sm-10">
+           <input type="text" class="form-control" id="title" ng-model="offerTitle">
+         </div>
+       </div>
+       <div class="form-group">
+         <label class="control-label col-sm-2 text-info" for="price">Price:</label>
+         <div class="col-sm-10">
+           <input type="text" class="form-control" id="price" ng-model="offerPrice">
+         </div>
+       </div>
+       <hr>
+       <div class="form-group">
+         <label class="control-label col-sm-2 text-info" for="description">
+           Description:
+         </label>
+         <div class="col-sm-10">
+           <textarea id="description" class="form-control" ng-model="offerDescription"></textarea>
+         </div>
+       </div>
+       <div class="text-center">
+         <button type="submit" class="btn btn-lg btn-success"></i>Create offer</button>
+       </div>
+     </form>
+
+    </div>
+  </div>
+
+</div>

@@ -20,7 +20,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: "registerController"
     })
     .state("profile", {
-      url: '/profile',
+      url: '/profile/:id',
       templateUrl: "partials/profile.html",
       controller:"profileController"
     })
@@ -38,6 +38,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
   	  url: "/showcase",
   	  templateUrl: "partials/showcase.html",
   	  controller:"showCaseController"
+    })
+    .state("newoffer", {
+      url: "/newoffer",
+      templateUrl: "partials/new_offer.html",
+      controller: "newOfferController"
     })
     .state("contact", {
   	  url: "/contact",
