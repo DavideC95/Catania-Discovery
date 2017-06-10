@@ -14,9 +14,12 @@ app.controller('homeController', function ($scope) {
   $scope.helloworld = "Hello world by AngularJS";
 });
 
-app.controller('profileController', function ($rootScope, $scope, $http) {
+app.controller('profileController', function ($rootScope, $scope, $http, $stateParams) {
+
+  var nickname = $stateParams.nickname;
+
   if ($rootScope.user) {
-    $http.get(app.path + "api/get_user_details?nickname=" + $rootScope.user.nickname)
+    $http.get(app.path + "api/get_user_details?nickname=" + nickname)
       .then(function(res) {
 
         $scope.userDetails = res.data;

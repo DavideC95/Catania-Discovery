@@ -20,7 +20,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: "registerController"
     })
     .state("profile", {
-      url: '/profile/:id',
+      url: '/profile/:nickname',
       templateUrl: "partials/profile.html",
       controller:"profileController"
     })

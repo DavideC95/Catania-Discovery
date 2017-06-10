@@ -1,4 +1,4 @@
-app.controller('panelController', function ($rootScope, $scope, $http, Notification, Upload) {
+app.controller('panelController', function ($rootScope, $scope, $http, $timeout, Notification, Upload) {
 
   // init variables
   $scope.f = null;
