@@ -2,7 +2,7 @@
 	<br><br><br>
 		<ul class="list-group">
 		  <li class="list-group-item" ng-repeat="offer in offers">
-				<img class="cartImages img-thumbnail" src="images/gem-01.jpg">
+				<img class="cartImages img-thumbnail img-responsive" ng-src="images/offers/{{ (offer.img_path != null && offer.img_path != '') ? offer.img_path : 'default-offer.png' }}">
 				<h3 class="text-primary">{{ offer.title }}</h3>
 				<p><b class="text-info">Offered By:</b> <a ng-href="#!/profile/{{ offer.user }}">{{ offer.user }}</a></p>
 				<p><b class="text-info">Description:</b> {{ offer.description }}</p>

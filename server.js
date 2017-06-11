@@ -142,7 +142,7 @@ apiRoutes.get("/offers", function(req, res) {
      throw(err);
 
      res.json(offers);
-  });
+  }).sort({date: -1});
 
 });
 
@@ -405,7 +405,9 @@ apiRoutes.post('/new_offer', function(req, res, next){
     user: req.nickname,
     title: req.body.title,
     price: req.body.price,
-    description: req.body.description
+    quantity: req.body.quantity,
+    description: req.body.description,
+    img_path: req.body.img_path
   });
 
   // save the offer
@@ -466,9 +468,11 @@ apiRoutes.post('/update_details', function(req, res, next){
 
 /*
  * /upload_img
- * sampleFile: file.js that contain the script
+ * sampleFile: file image [file]
+ * offer:      true if it's an offer picture [boolean]
  */
 apiRoutes.post('/upload_img', function(req, res, next) {
+
   if (!req.files) {
     return res.json({
       success: false,
@@ -489,22 +493,30 @@ apiRoutes.post('/upload_img', function(req, res, next) {
 }, function(req, res) {
   let sampleFile = req.files.sampleFile;
 
+  var path = "images/propic/";
+
+  if (req.body.offer)
+    path = "images/offers/";
+
    //use the mv() method to place the file on server directory
-   sampleFile.mv('./public/images/propic/' + sampleFile.name, function(err){
+   sampleFile.mv('./public/' + path + sampleFile.name, function(err){
      if(err)
        throw err;
      else {
-       User.update({"_id": req.id}, {"$set": { "propic": "images/propic/" + sampleFile.name } }, function(err){
-        if (err)
-          throw(err);
-        else {
-
-          res.json({
-          success: true,
-          message: "Picture updated!"
-          });
-        }
-      });
+       if (!req.body.offer) {
+         User.update({"_id": req.id}, {"$set": { "propic": "images/propic/" + sampleFile.name } }, function(err){
+          if (err)
+            throw(err);
+          else {
+            res.json({
+              success: true,
+              message: "Picture updated!"
+            });
+          }
+        });
+      }
+      else
+        res.json({ success: true });
 
      }
    });

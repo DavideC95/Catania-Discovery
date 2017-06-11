@@ -7,6 +7,8 @@ module.exports = mongoose.model('offer', new Schema({
 //  city_id: Schema.Types.ObjectId,
   title: String,
   price: Number,
+  quantity: Number,
   description: String,
-  img_path: String
+  img_path: String,
+  date: { type: Date, default: Date.now }
 }));
