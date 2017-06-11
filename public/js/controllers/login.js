@@ -20,9 +20,10 @@ app.controller('loginController', function ($scope, $rootScope, $state, $http, $
       function(res) {
         if (res.data.success) {
           $localStorage.user = {
-                                 token : res.data.token,
-                                 nickname : $scope.nickname
-                               };
+            token : res.data.token,
+            nickname : $scope.nickname,
+            seller : res.data.seller
+          };
           $rootScope.user = $localStorage.user;
           $state.go("home");
           Notification.success(res.data.message);

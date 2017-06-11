@@ -99,6 +99,7 @@ apiRoutes.post('/authenticate', function(req, res) {
         res.json({
           success: true,
           message: 'Now you are Logged!',
+          seller: user.seller,
           token: token
         });
       }
@@ -510,6 +511,27 @@ apiRoutes.post('/upload_img', function(req, res, next) {
    });
 
 });
+
+/*
+* /getExpireTime route to return token's remaining time
+*
+* token: token that needs to be verified
+*/
+apiRoutes.post('/getExpireTime', function(req, res){
+  var token = req.body.token;
+  var time;
+
+  jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+    if (err)
+      return res.json({ success: false, message: 'Failed to authenticate token.' });
+    else
+      res.json({
+        timeExpire: decoded.iat,
+        success: true
+      });
+  });
+
+})
 
 // =======================
 // start the server ======
