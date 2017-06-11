@@ -255,7 +255,6 @@ apiRoutes.post('/register', function(req, res, next){
  */
 apiRoutes.get('/verify', function(req,res){
   var id_token = req.query.token;
-  console.log("XX##########"+id_token);
   User.update({"_id": id_token}, {"$set": {"blocked": false}}, function(err){
     if(err)
       throw(err);
@@ -537,4 +536,4 @@ apiRoutes.post('/getExpireTime', function(req, res){
 // start the server ======
 // =======================
 app.listen(port);
-console.log('AzureCloud-Cytoscape http://localhost:' + port);
+console.log('Catania Discovery http://localhost:' + port);
