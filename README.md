@@ -1,5 +1,10 @@
-# AzureCloud-Cytoscape
-TAP - Progetto Azure
+# Catania Discovery
+University for **"Technologies and Advanced Programming"** course.
+
+Architecture of the project.
+
+![Catania Discovery Architecture](Architecture.jpg)
+
 
 ### Requirements
 
