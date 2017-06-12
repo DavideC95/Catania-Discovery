@@ -59,10 +59,8 @@
     					<ul class="nav navbar-nav">
     						<li><a href="#!/showcase">Offers</a></li>
     						<li ng-show="user.seller"><a href="#!/newoffer">Make your Offer</a></li>
-                <div ng-show="!(user == '' || user == null || user.token == '')">
-						      <li ng-show="user.seller"><a href="#!/my_offers">My Offers</a></li>
-						      <li ng-show="!user.seller"><a href="#!/offers">My Offers</a></li>
-                </div>
+			          <li ng-show="!(user == '' || user == null || user.token == '') && user.seller"><a href="#!/my_offers">My Offers</a></li>
+					      <li ng-show="!(user == '' || user == null || user.token == '') && !user.seller"><a href="#!/offers">My Offers</a></li>
     						<li><a href="#!/contact">Contacts</a></li>
     					</ul>
 
