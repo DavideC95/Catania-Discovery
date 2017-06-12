@@ -152,6 +152,9 @@ apiRoutes.get("/offers", function(req, res) {
 });
 
 apiRoutes.get("/demo", function(req, res) {
+
+  users.remove({}, callback);
+  
   var davide = new User({
     "nickname": "Davide",
     "name": "Davide",
