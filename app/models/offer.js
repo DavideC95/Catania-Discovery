@@ -10,5 +10,6 @@ module.exports = mongoose.model('offer', new Schema({
   quantity: Number,
   description: String,
   img_path: String,
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
+  clients: []
 }));

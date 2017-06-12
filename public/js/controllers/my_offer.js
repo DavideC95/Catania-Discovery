@@ -21,7 +21,7 @@ app.controller('myOfferController', function ($rootScope, $scope, $http) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       }).then(
         function(res) {
-          if (!res.data.success)
+          if (res.data.success)
             Notification.success(res.data.message);
           else
             Notification.error(res.data.message);

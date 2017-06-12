@@ -409,7 +409,8 @@ apiRoutes.post('/new_offer', function(req, res, next){
     price: req.body.price,
     quantity: req.body.quantity,
     description: req.body.description,
-    img_path: req.body.img_path
+    img_path: req.body.img_path,
+    clients: []
   });
 
   // save the offer
@@ -468,6 +469,57 @@ apiRoutes.post('/modify_offer', function(req, res, next){
       "price": req.body.price
     }
   }, function(err){
+     if (err)
+      throw(err);
+     else {
+       res.json({
+         success: true,
+         message: "Offer updated!"
+       });
+     }
+   });
+
+});
+
+/*
+ * /take_offer
+ *
+ * offer_id:    id of the offer [ObjectID]
+ */
+apiRoutes.post('/take_offer', function(req, res, next){
+
+  var offs = [];
+
+  var token = req.body.token;
+
+  jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+    if (err)
+      return res.json({ success: false, message: 'Failed to authenticate token.' });
+    else {
+      req.id = decoded._doc._id;
+      req.nickname = decoded._doc.nickname;
+      next();
+    }
+  });
+
+}, function(req, res, next) {
+
+ Offer.find({ _id: req.body.offer_id }, function(err, offers) {
+   offs = offers;
+   if (!offers[0] || offers[0].quantity == 0)
+     return res.json({
+       success: false,
+       message: "This offer doesn't exist or it is not more available!"
+     });
+   else
+     next();
+ });
+
+}, function(req, res) {
+  Offer.update(
+    {"_id": req.body.offer_id},
+    {"$set": { "quantity": offs[0].quantity-1 } },
+    {"$push": { "clients" : req.nickname } }, function(err){
      if (err)
       throw(err);
      else {

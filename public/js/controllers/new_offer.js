@@ -49,7 +49,7 @@ app.controller("newOfferController", function($scope, $rootScope, $http, $timeou
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).then(
       function(res) {
-        if (!res.data.success)
+        if (res.data.success)
           Notification.success(res.data.message);
         else
           Notification.error(res.data.message);
