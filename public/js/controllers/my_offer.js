@@ -33,3 +33,9 @@ app.controller('myOfferController', function ($rootScope, $scope, $http) {
 
     };
 });
+
+app.controller('myOfferClientController', function ($rootScope, $scope, $http) {
+    $http.get(app.path + "api/offers?client=" + $rootScope.user.nickname).then(function(response) {
+        $scope.offers = response.data;
+    });
+});

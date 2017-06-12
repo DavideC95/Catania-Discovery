@@ -18,6 +18,8 @@ var Offer     = require('./app/models/offer');
 var OfferType = require('./app/models/offerType');
 var City      = require('./app/models/city');
 
+var ObjectId = require('mongoose').Types.ObjectId;
+
 // =======================
 // configuration =========
 // =======================
@@ -92,7 +94,7 @@ apiRoutes.post('/authenticate', function(req, res) {
         // if user is found and password is right
         // create a token
         var token = jwt.sign(user, app.get('superSecret'), {
-          expiresIn: 1440 // expires in 24 hours
+          expiresIn: 21440 // expires in 24 hours
         });
 
         // return the information including token as JSON
@@ -129,6 +131,7 @@ apiRoutes.get("/cities", function(req, res){
  * /offers
  *
  * nickname: to filter the offers by nickname [string]
+ * client:    nickname of the client [string]
  */
 apiRoutes.get("/offers", function(req, res) {
 
@@ -136,6 +139,8 @@ apiRoutes.get("/offers", function(req, res) {
 
   if (req.query.nickname)
     filter = { user: req.query.nickname };
+  else if (req.query.client)
+    filter = { clients: req.query.client };
 
   Offer.find(filter, function(err, offers){
    if (err)
@@ -517,9 +522,10 @@ apiRoutes.post('/take_offer', function(req, res, next){
 
 }, function(req, res) {
   Offer.update(
-    {"_id": req.body.offer_id},
-    {"$set": { "quantity": offs[0].quantity-1 } },
-    {"$push": { "clients" : req.nickname } }, function(err){
+    {"_id": new ObjectId(req.body.offer_id) },
+    {"$push": { "clients" : req.nickname },
+     "$set": { "quantity": offs[0].quantity-1 } }, function(err){
+
      if (err)
       throw(err);
      else {
