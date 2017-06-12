@@ -151,6 +151,93 @@ apiRoutes.get("/offers", function(req, res) {
 
 });
 
+apiRoutes.get("/demo", function(req, res) {
+  var davide = new User({
+    "nickname": "Davide",
+    "name": "Davide",
+    "surname": "Costa",
+    "password": "davide",
+    "email": "davidecosta@discoverycatania.it",
+    "phone": "3889789262",
+    "propic": "images/propic/davide.jpeg",
+    "seller": true,
+    "blocked": false,
+    "description": "Ciao, sono Davide Costa... Lorem ipsum dolor sit amet, liber epicurei interesset mea et, et sapientem periculis his, sit id dolor postulant. Usu posse mucius no, ei nec sensibus praesent rationibus. Est id vide eirmod suavitate, nam ad denique menandri. Modus recusabo et nam, mei feugait fierent accusata ei."
+  });
+
+  davide.save(function(err) {
+    if (err) throw err;
+  });
+
+  var helias = new User({
+    "nickname": "Helias",
+    "name": "Stefano",
+    "surname": "Borzì",
+    "password": "stefano",
+    "email": "stefanoborzì@discoverycatania.it",
+    "phone": "3889789263",
+    "propic": "images/propic/helias.jpg",
+    "seller": true,
+    "blocked": false,
+    "description": "Ciao, sono Stefano Borzì... Lorem ipsum dolor sit amet, liber epicurei interesset mea et, et sapientem periculis his, sit id dolor postulant. Usu posse mucius no, ei nec sensibus praesent rationibus. Est id vide eirmod suavitate, nam ad denique menandri. Modus recusabo et nam, mei feugait fierent accusata ei."
+  });
+  helias.save(function(err) {
+    if (err) throw err;
+  });
+
+  var IAmTask = new User({
+    "nickname": "IAmTask",
+    "name": "Danilo",
+    "surname": "Tascone",
+    "password": "danilo",
+    "email": "danilotascone@discoverycatania.it",
+    "phone": "3889789263",
+    "propic": "images/propic/task.jpeg",
+    "seller": true,
+    "blocked": false,
+    "description": "Ciao, sono Danilo Tascone... Lorem ipsum dolor sit amet, liber epicurei interesset mea et, et sapientem periculis his, sit id dolor postulant. Usu posse mucius no, ei nec sensibus praesent rationibus. Est id vide eirmod suavitate, nam ad denique menandri. Modus recusabo et nam, mei feugait fierent accusata ei."
+  });
+  IAmTask.save(function(err) {
+    if (err) throw err;
+  });
+
+  var tourist = new User({
+    "nickname": "tourist",
+    "name": "Tourist",
+    "surname": "Demo",
+    "password": "tourist",
+    "email": "tourist@discoverycatania.it",
+    "phone": "3889789264",
+    "seller": false,
+    "blocked": false,
+    "description": "Ciao, sono un turista! Lorem ipsum dolor sit amet, liber epicurei interesset mea et, et sapientem periculis his, sit id dolor postulant. Usu posse mucius no, ei nec sensibus praesent rationibus. Est id vide eirmod suavitate, nam ad denique menandri. Modus recusabo et nam, mei feugait fierent accusata ei."
+  });
+  tourist.save(function(err) {
+    if (err) throw err;
+  });
+
+  var seller = new User({
+    "nickname": "seller",
+    "name": "Seller",
+    "surname": "Demo",
+    "password": "seller",
+    "email": "seller@discoverycatania.it",
+    "phone": "3889789265",
+    "seller": true,
+    "blocked": false,
+    "description": "Ciao, sono seller! Lorem ipsum dolor sit amet, liber epicurei interesset mea et, et sapientem periculis his, sit id dolor postulant. Usu posse mucius no, ei nec sensibus praesent rationibus. Est id vide eirmod suavitate, nam ad denique menandri. Modus recusabo et nam, mei feugait fierent accusata ei."
+  });
+  seller.save(function(err) {
+    if (err) throw err;
+  });
+
+  return res.json({
+    success: "true",
+    message: "demo initialized!"
+  })
+
+});
+
 /*
  * /register
  *
