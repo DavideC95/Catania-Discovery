@@ -128,14 +128,14 @@ apiRoutes.get("/cities", function(req, res){
 /*
  * /offers
  *
- * user_id: to filter the offers by user_id [string]
+ * nickname: to filter the offers by nickname [string]
  */
 apiRoutes.get("/offers", function(req, res) {
 
   var filter = {};
 
-  if (req.query.user_id)
-    filter = { user_id: req.query.user_id };
+  if (req.query.nickname)
+    filter = { user: req.query.nickname };
 
   Offer.find(filter, function(err, offers){
    if (err)
@@ -371,7 +371,9 @@ apiRoutes.use(function(req, res, next) {
   *
   * title:       title of the offer [string]
   * description: description of the offer [string]
-  * price:       price of the offer [string]
+  * price:       price of the offer [number]
+  * quantity:    quantity of the offer [number]
+  * img_path:    path of the image [string]
   */
 apiRoutes.post('/new_offer', function(req, res, next){
 
@@ -419,6 +421,62 @@ apiRoutes.post('/new_offer', function(req, res, next){
       message: "Offer registered successfully!"
     })
   });
+
+});
+
+/*
+ * /modify_offer
+ *
+ * title:       title of the offer [string]
+ * description: description of the offer [string]
+ * price:       price of the offer [number]
+ * quantity:    quantity of the offer [number]
+ * id:         id of the offer [ObjectID]
+ */
+apiRoutes.post('/modify_offer', function(req, res, next){
+
+ var token = req.body.token;
+
+ jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+   if (err)
+     return res.json({ success: false, message: 'Failed to authenticate token.' });
+   else {
+     req.id = decoded._doc._id;
+     req.nickname = decoded._doc.nickname;
+     next();
+   }
+ });
+
+}, function(req, res, next) {
+
+ Offer.find({ _id: req.body.id }, function(err, offers) {
+   if (!offers[0])
+     return res.json({
+       success: false,
+       message: "This offer doesn't exist!"
+     });
+   else
+     next();
+ });
+
+}, function(req, res) {
+  Offer.update({"_id": req.body.id}, {"$set":
+    {
+      "title": req.body.title,
+      "description": req.body.description,
+      "quantity": req.body.quantity,
+      "price": req.body.price
+    }
+  }, function(err){
+     if (err)
+      throw(err);
+     else {
+       res.json({
+         success: true,
+         message: "Offer updated!"
+       });
+     }
+   });
 
 });
 

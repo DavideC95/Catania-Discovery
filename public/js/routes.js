@@ -44,6 +44,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "partials/new_offer.html",
       controller: "newOfferController"
     })
+    .state("my_offers", {
+      url: "/my_offers",
+      templateUrl: "partials/my_offers.html",
+      controller:"myOfferController"
+    })
     .state("contact", {
   	  url: "/contact",
   	  templateUrl: "partials/contact.html"

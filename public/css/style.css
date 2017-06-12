@@ -114,10 +114,42 @@
 }
 
 .cartImages {
-	width:200px;
-	height:150px;
-	float:left;
-	margin-right: 15px;
+  vertical-align: middle;
+  display: inline-block;
+
+  margin-right: 15px;
+	width: 225px;
+  max-height: 200px;
+}
+
+.helper-center {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.helper-center-edit {
+  display: inline-block;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.img-container {
+  float: left;
+  height: 200px;
+}
+
+.img-container-edit {
+  float: left;
+  height: 250px;
+}
+
+.grey-effect {
+  -webkit-filter: grayscale(100%);
+     -moz-filter: grayscale(100%);
+       -o-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+          filter: grayscale(100%);
 }
 
 .list-group-item {

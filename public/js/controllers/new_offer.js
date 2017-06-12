@@ -21,9 +21,7 @@ app.controller("newOfferController", function($scope, $rootScope, $http, $timeou
         file.upload.then(function (response) {
             $timeout(function () {
                 file.result = response.data;
-                if (response.data.success)
-                  Notification.success(response.data.message);
-                else
+                if (!response.data.success)
                   Notification.error(response.data.message);
             });
         }, function (response) {
@@ -35,21 +33,23 @@ app.controller("newOfferController", function($scope, $rootScope, $http, $timeou
 
   $scope.saveOffer = function() {
 
+    var params = {
+      title: $scope.offerTitle,
+      price: $scope.offerPrice,
+      quantity: $scope.offerQuantity,
+      description: $scope.offerDescription,
+      img_path: ($scope.f != null && $scope.f.name != '') ? $scope.f.name : 'default-offer.png',
+      token: $rootScope.user.token
+    };
+
     $http({
       method: 'POST',
       url: app.path + "api/new_offer",
-      data: $.param({
-        title: $scope.offerTitle,
-        price: $scope.offerPrice,
-        quantity: $scope.offerQuantity,
-        description: $scope.offerDescription,
-        img_path: $scope.f.name,
-        token: $rootScope.user.token
-      }),
+      data: $.param(params),
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).then(
       function(res) {
-        if (res.data.success)
+        if (!res.data.success)
           Notification.success(res.data.message);
         else
           Notification.error(res.data.message);
