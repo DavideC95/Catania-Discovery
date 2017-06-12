@@ -8,8 +8,6 @@
       </div>
 			<h3 class="text-primary">{{ offer.title }}</h3>
 			<p><b class="text-info">Offered By:</b> <a ng-href="#!/profile/{{ offer.user }}">{{ offer.user }}</a></p>
-			<p><b class="text-info">Available:</b> <span class="text-success">{{ offer.quantity }}</span></p>
-			<p><b class="text-info">Price:</b> <span class="text-danger">{{ offer.price }} €</span></p>
 			<p><b class="text-info">Description:</b> <span class="text-success">{{ offer.description }}</span></p>
       <button type="button" class="btn btn-success btn-md buttons-size-2" ng-click="takeOffer(offer, user)">Take the offer</button>
 			<a ng-href="#!/profile/{{ offer.user }}"><button type="button" class="btn btn-warning btn-md buttons-size-2">Contact The Vendor</button></a>
