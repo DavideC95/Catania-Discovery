@@ -26,7 +26,7 @@ app.controller('showCaseController', function ($scope, $http, Notification) {
           Notification.error(res.data.message);
       },
       function(err) {
-        Notification.error("Error!");
+        Notification.error("You should be a tourist to take the offer!");
       }
     );
 
