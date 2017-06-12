@@ -3,6 +3,6 @@
 
   var app = angular.module('app');
 
-  app.path = "http://localhost:8080/";
+  app.path = "http://azuremyapp.azurewebsites.net/";
 
 }());
